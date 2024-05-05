@@ -7,7 +7,7 @@ public class CandyGenerator : MonoBehaviour
 {
     public static CandyGenerator instance;
     public List<GameObject> Candies = new List<GameObject>();
-    private float time_to_create = 4f;
+    private float time_to_create = 2f;
     private float actual_time = 0f;
     private float limitSuperior;
     private float limitInferior;

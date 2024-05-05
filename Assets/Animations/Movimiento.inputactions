@@ -1,0 +1,56 @@
+{
+    "name": "Movimiento",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "b55521db-7aa3-4f86-b775-0b4583eed9c2",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "096420ea-ed17-43a7-9b06-5d3872f1ae37",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "ad025b28-27c1-46e6-9ec5-52cbf000f515",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "fdc52941-773b-473b-bb87-bfbb66fcaba7",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a515c7b9-d79f-4db4-9710-e59cb24cd2a2",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

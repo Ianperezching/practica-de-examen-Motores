@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,18 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(up) && transform.position.y < limitSuperior)
-        {
-            myRB.velocity = new Vector2(0f, speed);
-        }
-        else if (Input.GetKey(down) && transform.position.y > limitInferior)
-        {
-            myRB.velocity = new Vector2(0f, -speed);
-        }
-        else
-        {
-            myRB.velocity = Vector2.zero;
-        }
+        
     }
 
     void SetMinMax()
@@ -55,5 +45,13 @@ public class PlayerMovement : MonoBehaviour
         {
             CandyGenerator.instance.ManageCandy(other.gameObject.GetComponent<CandyController>(), this);
         }
+    }
+    public void Movimiento(InputAction.CallbackContext context)
+    {
+        
+        float moveInput = context.ReadValue<Vector2>().y;
+
+      
+        myRB.velocity = new Vector2(0f, moveInput * speed);
     }
 }
