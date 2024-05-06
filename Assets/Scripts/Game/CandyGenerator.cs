@@ -12,6 +12,7 @@ public class CandyGenerator : MonoBehaviour
     private float limitSuperior;
     private float limitInferior;
     public List<GameObject> actual_candies = new List<GameObject>();
+   
 
     void Awake()
     {
@@ -25,6 +26,7 @@ public class CandyGenerator : MonoBehaviour
     void Start()
     {
         SetMinMax();
+
     }
 
     // Update is called once per frame
@@ -52,6 +54,7 @@ public class CandyGenerator : MonoBehaviour
     {
         if (player_script == null)
         {
+            
             Destroy(candy_script.gameObject);
             return;
         }

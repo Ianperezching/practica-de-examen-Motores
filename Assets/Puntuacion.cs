@@ -5,7 +5,9 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     private int score = 0; 
-    public TMPro.TextMeshProUGUI scoreText; 
+    public TMPro.TextMeshProUGUI scoreText;
+    public AudioClip audioClip;
+    public AudioSource Sonido;
 
     void Start()
     {
@@ -14,13 +16,15 @@ public class ScoreManager : MonoBehaviour
 
     public void IncreaseScore(int points)
     {
-        score += points; 
+        score += points;
+        Sonido.Play();
         UpdateScoreText(); 
     }
 
    
     void UpdateScoreText()
     {
-        scoreText.text = "Score: " + score.ToString(); 
+        scoreText.text = "Puntos: " + score.ToString();
+        
     }
 }

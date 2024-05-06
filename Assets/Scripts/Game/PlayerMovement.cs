@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class PlayerMovement : MonoBehaviour
     private float limitSuperior;
     private float limitInferior;
     public int player_lives = 4;
-    // Start is called before the first frame update
+    public int pointsToAdd = 10; 
+    public TextMeshProUGUI livesText;
+    public AudioClip audioClip;
+    public AudioSource Sonido;
+
     public void Awake()
     {
         myRB = GetComponent<Rigidbody2D>();
@@ -19,8 +24,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         SetMinMax();
-     
-        
+        UpdateLivesText();
+
+
     }
     void SetMinMax()
     {
@@ -34,11 +40,19 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Candy")
         {
             CandyGenerator.instance.ManageCandy(other.gameObject.GetComponent<CandyController>(), this);
+            ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+            if (scoreManager != null)
+            {
+                scoreManager.IncreaseScore(pointsToAdd);
+            }
         }
         if(other.tag == "Enemy")
         {
+            Sonido.Play();
             Destroy(other);
             --player_lives;
+            UpdateLivesText();
+            
         }
     }
     public void Movimiento(InputAction.CallbackContext context)
@@ -48,5 +62,9 @@ public class PlayerMovement : MonoBehaviour
 
       
         myRB.velocity = new Vector2(0f, moveInput * speed);
+    }
+    void UpdateLivesText()
+    {
+        livesText.text = "Vidas: " + player_lives.ToString(); 
     }
 }
