@@ -1,17 +1,17 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CandyGenerator : MonoBehaviour
+public class EnemyGenerator : MonoBehaviour
 {
-    public static CandyGenerator instance;
-    public List<GameObject> Candies = new List<GameObject>();
-    private float time_to_create = 0.5f;
+    public static EnemyGenerator instance;
+    public List<GameObject> Enemy = new List<GameObject>();
+    private float time_to_create = 2f;
     private float actual_time = 0f;
     private float limitSuperior;
     private float limitInferior;
-    public List<GameObject> actual_candies = new List<GameObject>();
+    public List<GameObject> actual_Enemy = new List<GameObject>();
 
     void Awake()
     {
@@ -33,11 +33,11 @@ public class CandyGenerator : MonoBehaviour
         actual_time += Time.deltaTime;
         if (time_to_create <= actual_time)
         {
-            GameObject candy = Instantiate(Candies[Random.Range(0, Candies.Count)],
+            GameObject candy = Instantiate(Enemy[Random.Range(0, Enemy.Count)],
             new Vector3(transform.position.x, Random.Range(limitInferior, limitSuperior), 0f), Quaternion.identity);
             candy.GetComponent<Rigidbody2D>().velocity = new Vector2(-2f, 0);
             actual_time = 0f;
-            actual_candies.Add(candy);
+            actual_Enemy.Add(candy);
         }
     }
 

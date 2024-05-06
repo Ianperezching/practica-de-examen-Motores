@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public KeyCode up;
-    public KeyCode down;
     private Rigidbody2D myRB;
     [SerializeField]
     private float speed;
@@ -21,17 +19,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         SetMinMax();
-        if (up == KeyCode.None) up = KeyCode.UpArrow;
-        if (down == KeyCode.None) down = KeyCode.DownArrow;
+     
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void SetMinMax()
     {
         Vector3 bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
@@ -44,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Candy")
         {
             CandyGenerator.instance.ManageCandy(other.gameObject.GetComponent<CandyController>(), this);
+        }
+        if(other.tag == "Enemy")
+        {
+            Destroy(other);
+            --player_lives;
         }
     }
     public void Movimiento(InputAction.CallbackContext context)
